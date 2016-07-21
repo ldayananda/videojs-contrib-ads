@@ -25,6 +25,21 @@ var
       // another cancellation is already in flight, so do nothing
       return;
     }
+
+    if (videojs.browser.IS_IOS || player.ads.videoElementRecycled()) {
+      // hide the player while waiting for ads to start
+      player.one(['adsready', 'play'], function() {
+        player.el_.style.visibility = 'hidden';
+        removeNativePoster(player);
+        player.poster(null);
+      });
+
+      // show the player if we need to view ads or content, not while waiting for ads
+      player.one(['adserror', 'adskip', 'adscanceled', 'adstart', 'adtimeout', 'nopreroll'], function() {
+        player.el_.style.visibility = 'visible';
+      });
+    }
+
     player.ads.cancelPlayTimeout = window.setTimeout(function() {
       // deregister the cancel timeout so subsequent cancels are scheduled
       player.ads.cancelPlayTimeout = null;
