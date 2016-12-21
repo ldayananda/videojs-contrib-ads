@@ -354,7 +354,7 @@ const contribAdsPlugin = function(options) {
         // add css to the element to indicate and ad is playing.
         player.addClass('vjs-ad-playing');
 
-        // We should remove the vjs-live class if it has been added in order to 
+        // We should remove the vjs-live class if it has been added in order to
         // show the adprogress control bar on Android devices for falsely
         // determined LIVE videos due to the duration incorrectly reported as Infinity
         if (player.hasClass('vjs-live')) {
@@ -402,6 +402,11 @@ const contribAdsPlugin = function(options) {
           this.state = 'content-resuming';
           // Trigger 'adend' to notify that we are exiting 'ad-playback'
           player.trigger('adend');
+        },
+        ended() {
+          // On platforms where the video element is not reused
+          // we can get an ended event when content ends during ad playback.
+          this._contentHasEnded = true;
         }
       }
     },
