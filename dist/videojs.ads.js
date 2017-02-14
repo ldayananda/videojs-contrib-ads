@@ -1,6 +1,6 @@
 /**
  * videojs-contrib-ads
- * @version 4.2.4-0
+ * @version 4.2.4-1
  * @copyright 2017 Brightcove
  * @license Apache-2.0
  */
@@ -971,7 +971,7 @@ var contribAdsPlugin = function contribAdsPlugin(options) {
     // This is experimental currently. Do not rely on its presence or behavior!
     adType: null,
 
-    VERSION: '4.2.4-0',
+    VERSION: '4.2.4-1',
 
     reset: function reset() {
       player.ads.disableNextSnapshotRestore = false;
