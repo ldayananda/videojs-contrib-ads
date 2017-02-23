@@ -1,6 +1,6 @@
 /**
  * videojs-contrib-ads
- * @version 4.2.4-1
+ * @version 4.2.4-2
  * @copyright 2017 Brightcove
  * @license Apache-2.0
  */
@@ -965,7 +965,7 @@ var contribAdsPlugin = function contribAdsPlugin(options) {
     // seek backwards and replay content, but _contentHasEnded remains true.
     _contentHasEnded: false,
 
-    VERSION: '4.2.4-1',
+    VERSION: '4.2.4-2',
 
     reset: function reset() {
       player.ads.disableNextSnapshotRestore = false;
